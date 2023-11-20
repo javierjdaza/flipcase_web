@@ -27,3 +27,14 @@
   background-color: #171717;
   font-weight: bold !important;
 }
+
+.fw-bold {
+  font-weight: bold;
+}
+
+.fs-l {
+  font-size: 1.2rem;
+}
+.fs-xl {
+  font-size: 2rem;
+}

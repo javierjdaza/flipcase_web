@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <title>Drag and Drop Image</title>
+
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+      }
+
+      #drop-area {
+        border: 2px dashed #ccc;
+        border-radius: 8px;
+        padding: 20px;
+        text-align: center;
+        cursor: pointer;
+      }
+
+      #output-image {
+        max-width: 100%;
+        margin-top: 20px;
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="drop-area" class="text-center">
+      <p>Drag and drop an image here or click to select one.</p>
+      <input
+        type="file"
+        id="file-input"
+        accept="image/*"
+        style="display: none"
+      />
+    </div>
+
+    <img id="output-image" src="" alt="Dropped Image" />
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const dropArea = document.getElementById("drop-area");
+        const fileInput = document.getElementById("file-input");
+        const outputImage = document.getElementById("output-image");
+
+        dropArea.addEventListener("dragover", function (e) {
+          e.preventDefault();
+          dropArea.classList.add("bg-light");
+        });
+
+        dropArea.addEventListener("dragleave", function () {
+          dropArea.classList.remove("bg-light");
+        });
+
+        dropArea.addEventListener("drop", function (e) {
+          e.preventDefault();
+          dropArea.classList.remove("bg-light");
+          const files = e.dataTransfer.files;
+          handleFiles(files);
+        });
+
+        fileInput.addEventListener("change", function () {
+          const files = fileInput.files;
+          handleFiles(files);
+        });
+
+        function handleFiles(files) {
+          if (files.length > 0) {
+            const file = files[0];
+            const reader = new FileReader();
+
+            reader.onload = function (e) {
+              const imageUrl = e.target.result;
+              displayImage(imageUrl);
+            };
+
+            reader.readAsDataURL(file);
+          }
+        }
+
+        function displayImage(imageUrl) {
+          outputImage.src = imageUrl;
+          outputImage.style.display = "block";
+        }
+      });
+    </script>
+  </body>
+</html>
