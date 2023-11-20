@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>FlipCase</title>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css"
+    />
+  </head>
+  <body>
+    <!-- LOGO -->
+    <div class="container-fluid">
+      <div class="row justify-content-center">
+        <div class="col-md-6">
+          <div class="container">
+            <div class="text-center">
+              <img
+                src="./statics/svg_flipcase.png"
+                class="w-25 mt-7"
+                alt="logo flipcase"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- NAV BAR -->
+    <div class="container-fluid">
+      <div class="row justify-content-center">
+        <div class="col-md-9 p-h mt-5">
+          <ul class="nav nav-pills nav-justified">
+            <li class="nav-item">
+              <a
+                class="nav-link nav-link-horizontal active"
+                onclick="changeColor(this)"
+                href="#"
+                id="tab1"
+                ><i class="bi-house"></i> Home
+              </a>
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link nav-link-horizontal"
+                onclick="changeColor(this)"
+                href="#"
+                id="tab2"
+                ><i class="bi-cloud-upload"></i> Upload</a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link nav-link-horizontal"
+                onclick="changeColor(this)"
+                href="#"
+                id="tab3"
+                ><i class="bi-file-person-fill"></i> Contact</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Dynamic Content Area -->
+
+    <div class="col-md-9 mt-4 container-fluid show active">
+      <div class="tab-pane fade" id="content1">
+        <hr class="my-4 text-center" />
+        <p class="text-center fw-bold fs-1">
+          Welcome to the FlipCase Customization Center!
+        </p>
+        <p />
+
+        <!-- Centered Horizontal Line -->
+        <hr class="my-4 text-center" />
+      </div>
+    </div>
+
+    <!-- Content for Tab 2 -->
+    <div class="tab-pane fade" id="content2">
+      <!-- Content for Tab 2 -->
+      <div class="jumbotron">
+        <h1 class="display-4">Tab 2 Jumbotron</h1>
+        <p class="lead">This is a jumbotron for Tab 2.</p>
+        <hr class="my-4" />
+        <p>Feel free to customize the content for Tab 2.</p>
+      </div>
+    </div>
+
+    <!-- Content for Tab 3 -->
+    <div class="tab-pane fade" id="content3">
+      <div class="jumbotron">
+        <h1 class="display-4">Tab 3 Jumbotron</h1>
+        <p class="lead">This is a jumbotron for Tab 3.</p>
+        <hr class="my-4" />
+        <p>Feel free to customize the content for Tab 3.</p>
+      </div>
+    </div>
+
+    <script src="./main.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

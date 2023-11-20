@@ -1,0 +1,29 @@
+.mt-7 {
+  margin-top: 7rem !important;
+}
+
+/* .nav-link > .nav-link-horizontal > .active a:hove {
+  color: #fff !important; 
+  background-color: #171717;
+  border-radius: 0.5rem !important;
+  font-weight: bold !important;
+} */
+
+.nav-item {
+  /* padding: 0.1rem !important; */
+  padding: 0.5rem !important;
+}
+.nav-item a {
+  color: #171717;
+  font-weight: 300;
+}
+.p-h {
+  border-radius: 0.5rem !important;
+  background-color: #f0f2f6 !important;
+}
+
+.nav-pills .nav-link.active,
+.nav-pills .show > .nav-link {
+  background-color: #171717;
+  font-weight: bold !important;
+}
