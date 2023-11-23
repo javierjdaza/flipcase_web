@@ -2,91 +2,53 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, shrink-to-fit=no"
-    />
-    <title>Drag and Drop Image</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Original Image Size</title>
 
     <style>
-      body {
-        font-family: Arial, sans-serif;
-      }
-
-      #drop-area {
-        border: 2px dashed #ccc;
-        border-radius: 8px;
-        padding: 20px;
-        text-align: center;
-        cursor: pointer;
-      }
-
-      #output-image {
-        max-width: 100%;
-        margin-top: 20px;
-        display: none;
+      .img_2 {
+        background-image: url("./bitmap.png");
+        background-position: center; /* Center the image */
+        background-repeat: no-repeat; /* Do not repeat the image */
+        background-size: cover; /* Resize the background image to cover the entire container */
+        width: 275px;
+        height: 591px;
       }
     </style>
   </head>
   <body>
-    <div id="drop-area" class="text-center">
-      <p>Drag and drop an image here or click to select one.</p>
-      <input
-        type="file"
-        id="file-input"
-        accept="image/*"
-        style="display: none"
-      />
-    </div>
-
-    <img id="output-image" src="" alt="Dropped Image" />
+    <input type="file" id="imageInput" accept="image/*" />
+    <img id="displayImage" alt="Uploaded Image" />
+    <div class="img_2">asdsadsadasdasdas dasdasdasdas asdasdsa</div>
 
     <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        const dropArea = document.getElementById("drop-area");
-        const fileInput = document.getElementById("file-input");
-        const outputImage = document.getElementById("output-image");
-
-        dropArea.addEventListener("dragover", function (e) {
-          e.preventDefault();
-          dropArea.classList.add("bg-light");
-        });
-
-        dropArea.addEventListener("dragleave", function () {
-          dropArea.classList.remove("bg-light");
-        });
-
-        dropArea.addEventListener("drop", function (e) {
-          e.preventDefault();
-          dropArea.classList.remove("bg-light");
-          const files = e.dataTransfer.files;
-          handleFiles(files);
-        });
-
-        fileInput.addEventListener("change", function () {
-          const files = fileInput.files;
-          handleFiles(files);
-        });
-
-        function handleFiles(files) {
-          if (files.length > 0) {
-            const file = files[0];
-            const reader = new FileReader();
-
-            reader.onload = function (e) {
-              const imageUrl = e.target.result;
-              displayImage(imageUrl);
-            };
-
-            reader.readAsDataURL(file);
-          }
+      function handleFileChange(event) {
+        const file = event.target.files[0];
+        if (file) {
+          const reader = new FileReader();
+          reader.onload = handleReaderLoad;
+          reader.readAsDataURL(file);
         }
+      }
 
-        function displayImage(imageUrl) {
-          outputImage.src = imageUrl;
-          outputImage.style.display = "block";
-        }
-      });
+      function handleImageLoad() {
+        const originalWidth = this.width;
+        const originalHeight = this.height;
+        console.log(`Original Image Size: ${originalWidth}px x ${originalHeight}px`);
+
+        // Set the original width and height to display the image
+        document.getElementById("displayImage").src = this.src;
+        document.getElementById("displayImage").width = originalWidth;
+        document.getElementById("displayImage").height = originalHeight;
+      }
+
+      function handleReaderLoad(e) {
+        const image = new Image();
+        image.onload = handleImageLoad;
+        image.src = e.target.result;
+      }
+
+      document.getElementById("imageInput").addEventListener("change", handleFileChange);
     </script>
   </body>
 </html>
